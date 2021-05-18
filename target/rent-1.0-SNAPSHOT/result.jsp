@@ -2,16 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>Registration</title>
 </head>
 <body>
-<%=request.getAttribute("responce")%>
-<hr>
-${requestScope.responce}
-
-<hr>result.jsp
-${responce}
-
+</p>
+    User was successfully registered, you can login now.
+</p>
 <hr>
 <a href="index.jsp">Back</a>
 

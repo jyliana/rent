@@ -5,20 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-<%@page import="com.example.rent.db.dao.UserDao" %>
-<%@ page import="com.example.rent.db.entity.User" %>
-<jsp:useBean id="user" class="com.example.rent.db.entity.User"/>
+<form action="controller">
+    <h2><%= "Registration:" %>
+    </h2>
+    <%= "Please enter your credentials: " %><br>
+    <input type="hidden" name="command" value="registrationUser">
+    <input type="text" name="name" value="Name" onclick="this.value=''"/></br>
+    <input type="text" name="email" value="Email" onclick="this.value=''"/></br>
+    <input type="password" name="pass" value="Password" onclick="this.value=''"/></br>
+    <input type="submit" formmethod="post" value="Register"/>
+</form>
+<hr>
+<a href="index.jsp">Back</a>
 
-<jsp:setProperty property="*" name="user"/>
-
-<%
-    String name = request.getParameter("name");
-    String email = request.getParameter("email");
-    String pass = request.getParameter("pass");
-    boolean status = UserDao.register(User.createUser(name, email, pass));
-    if (status)
-        System.out.print("You are successfully registered");
-
-%>
 </body>
 </html>
