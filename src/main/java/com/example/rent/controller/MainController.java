@@ -1,34 +1,21 @@
 package com.example.rent.controller;
 
-import com.example.rent.db.dao.UserDao;
-import com.example.rent.db.entity.User;
-
-import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 
 @WebServlet("/MainController")
 public class MainController extends HttpServlet {
     @Override
-    public void init(ServletConfig config) throws ServletException {
-        System.out.println("Hi#init");
-        super.init(config);
-    }
-
-    @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("Hi#service");
         response.setContentType("text/plain");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
-
-        UserDao.register(User.createUser(name, email, pass));
 
         PrintWriter out = response.getWriter();
         out.append("name: " + name + System.lineSeparator())

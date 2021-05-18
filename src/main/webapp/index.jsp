@@ -2,20 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rental cars - Wellcome page</title>
+    <title>Rental cars - Welcome page</title>
 </head>
 <body>
-<%--<h1><%= "Hello World!" %>--%>
-<%--</h1>--%>
-<%--<br/>--%>
-<%--<a href="hello-servlet">Hello Servlet</a>--%>
 
-<%--<form action="hello-form">--%>
-<%--    <input name="login">--%>
-<%--    <input type="submit" value="Send">--%>
-<%--</form>--%>
-<%--<hr>--%>
-<%--<hr>--%>
 <script>
     function isEmail() {
         var str = document.getElementById("email").value;
@@ -31,14 +21,19 @@
     }
 </script>
 
-<form action="process.jsp">
-    <h2><%= "Registration:" %>
+<form action="controller">
+    <h2><%= "Log in:" %>
     </h2>
-    <%= "Please enter your credentials: " %><br>
+    <input type="hidden" name="command" value="logInUser">
     <input type="text" name="name" value="Name" onclick="this.value=''"/></br>
-    <input type="text" name="email" value="Email" onclick="this.value=''"/></br>
     <input type="password" name="pass" value="Password" onclick="this.value=''"/></br>
-    <input type="submit" formmethod="post" value="Register"/>
+    <input type="submit" formmethod="post" value="Log in"/>
+</form>
+</br>
+
+Don't have an account?
+<form action="process.jsp">
+    <button>Sign up</button>
 </form>
 
 </body>

@@ -5,9 +5,9 @@ CREATE TABLE `rental`.`roles` (
     `role` VARCHAR(20) NOT NULL UNIQUE
 );
 
-INSERT INTO roles VALUES (0, 'admin');
-INSERT INTO roles VALUES (1, 'manager');
-INSERT INTO roles VALUES (2, 'client');
+INSERT INTO `rental`.`roles` VALUES (0, 'admin');
+INSERT INTO `rental`.`roles` VALUES (1, 'manager');
+INSERT INTO `rental`.`roles` VALUES (2, 'client');
 
 CREATE TABLE `rental`.`users` (
     `id`       INT         NOT NULL AUTO_INCREMENT,
@@ -25,5 +25,5 @@ CREATE TABLE `rental`.`users` (
             ON UPDATE RESTRICT
 );
 
-INSERT INTO users (`login`, `password`, `email`, `role_id`)
+INSERT INTO `rental`.`users` (`login`, `password`, `email`, `role_id`)
 VALUES ('admin', 'admin', 'admin@gmail.com', 0);
