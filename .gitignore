@@ -1,12 +1,7 @@
 # Compiled class file
 *.class
 out
-*.xml
-*.iml
-*.html
 .idea
-4.JavaCollections/src/Test.java
-
 
 # Log file
 *.log
