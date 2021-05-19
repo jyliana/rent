@@ -25,7 +25,7 @@ public class LogInUserCommand implements Command {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
                     name = resultSet.getString(1);
-                    return "Hi, " + name;
+                    return "Hi, " + name + "! You have been successfully authorized.";
                 } else
                     return "There was a problem logging in. Check your email and password or create an account.";
             }

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>Sign up page</title>
 </head>
 <body>
 <form action="controller">
