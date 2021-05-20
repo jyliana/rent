@@ -2,6 +2,7 @@ package com.example.rent.commands;
 
 import com.example.rent.db.DBManager;
 import com.example.rent.db.UserDao;
+import com.example.rent.model.Role;
 import com.example.rent.model.User;
 import com.sun.istack.internal.logging.Logger;
 
@@ -21,8 +22,11 @@ public class LogInUserCommand implements Command {
         User user = new User();
         user.setLogin(name);
         user.setPass(pass);
-        if (UserDao.findUser(user)) {
-            return "main.jsp";
+        if (UserDao.findUser(user) != null) {
+            if (Role.getRole(user).equals(Role.ADMIN))
+                return "adminpanel.jsp";
+            else
+                return "main.jsp";
         }
         return "error.jsp";
     }

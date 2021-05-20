@@ -3,12 +3,14 @@ package com.example.rent.controller;
 import com.example.rent.DBException;
 import com.example.rent.commands.Command;
 import com.example.rent.commands.CommandContainer;
+import com.mysql.cj.Session;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/Controller")
@@ -38,6 +40,10 @@ public class Controller extends HttpServlet {
             request.getSession().setAttribute("error", e);
             System.out.println(e.getMessage() + e.getStackTrace());
         }
+        String greeting = "Hi, " + request.getParameter("name");
+        request.setAttribute("responce", greeting);
+        HttpSession session = request.getSession();
+        session.setAttribute("name", request.getParameter("name"));
         response.sendRedirect(address);
     }
 }

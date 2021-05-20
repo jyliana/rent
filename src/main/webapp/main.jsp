@@ -12,7 +12,10 @@
 </head>
 <body>
 <p>
-    Hi! You have been successfully authorized.
+    Hi!
+        <% String name = (String)session.getAttribute("name"); %>
+        <%=name %>
+    have been successfully authorized.
 <p>
 </body>
 </html>

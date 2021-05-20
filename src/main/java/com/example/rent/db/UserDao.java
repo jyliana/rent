@@ -1,6 +1,7 @@
 package com.example.rent.db;
 
 import com.example.rent.commands.RegistrationUserCommand;
+import com.example.rent.model.Role;
 import com.example.rent.model.User;
 import com.sun.istack.internal.logging.Logger;
 
@@ -30,24 +31,21 @@ public class UserDao {
         }
     }
 
-    public static boolean findUser(User user) {
-        String sql = "SELECT login FROM users WHERE login=? and password=?";
-        String name = "";
+    public static User findUser(User user) {
+        String sql = "SELECT * FROM users WHERE login=? and password=?";
         try (Connection conn = DBManager.getInstance().getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.setString(1, user.getLogin());
             preparedStatement.setString(2, user.getPass());
-
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    name = resultSet.getString(1);
+                    user.setRoleId(resultSet.getInt("role_id"));
+                    return user;
                 }
-//                    return "There was a problem logging in. Check your email and password or create an account.";
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
-//            return "User was not registered";
         }
-        return name.equals(user.getLogin());
+        return null;
     }
 }

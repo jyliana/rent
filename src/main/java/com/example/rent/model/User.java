@@ -9,11 +9,11 @@ public class User {
     private int id = 0;
     private int roleId = 2;
 
-    public static User createUser(String user, String email, String pass) {
+    public static User createUser(String user, String pass, String email) {
         User created = new User();
         created.setLogin(user);
-        created.setEmail(email);
         created.setPass(pass);
+        created.setEmail(email);
         return created;
     }
 
