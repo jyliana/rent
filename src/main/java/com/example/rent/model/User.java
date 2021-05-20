@@ -1,5 +1,4 @@
-package com.example.rent.db.entity;
-
+package com.example.rent.model;
 
 import java.util.Objects;
 
@@ -9,7 +8,6 @@ public class User {
     private String email;
     private int id = 0;
     private int roleId = 2;
-
 
     public static User createUser(String user, String email, String pass) {
         User created = new User();
