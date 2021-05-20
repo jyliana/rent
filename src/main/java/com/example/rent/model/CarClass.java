@@ -1,6 +1,4 @@
-package com.example.rent.db.entity;
-
-import com.example.rent.db.Car;
+package com.example.rent.model;
 
 public enum CarClass {
     ENTRY, BUSINESS, PREMIUM;

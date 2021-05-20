@@ -1,6 +1,4 @@
-package com.example.rent.db;
-
-import com.example.rent.db.entity.User;
+package com.example.rent.model;
 
 public enum Role {
     ADMIN, MANAGER, CLIENT;

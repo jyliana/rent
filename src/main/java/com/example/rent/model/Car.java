@@ -1,6 +1,4 @@
-package com.example.rent.db;
-
-import com.example.rent.db.entity.User;
+package com.example.rent.model;
 
 import java.math.BigDecimal;
 import java.util.Objects;
