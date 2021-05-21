@@ -15,6 +15,7 @@ CREATE TABLE `rental`.`users` (
     `password` VARCHAR(45) NOT NULL,
     `email`    VARCHAR(45) NOT NULL,
     `role_id`  INT         NOT NULL,
+    `is_blocked` TINYINT NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `login_UNIQUE` (`login` ASC) VISIBLE,
     UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
@@ -25,8 +26,8 @@ CREATE TABLE `rental`.`users` (
             ON UPDATE RESTRICT
 );
 
-INSERT INTO `rental`.`users` (`login`, `password`, `email`, `role_id`)
-VALUES ('admin', 'admin', 'admin@gmail.com', 0);
+INSERT INTO `rental`.`users` (`login`, `password`, `email`, `role_id`, `is_blocked`) VALUES ('admin', 'admin', 'admin@gmail.com', 0, false);
+INSERT INTO `rental`.`users` (`login`, `password`, `email`, `role_id`, `is_blocked`) VALUES ('test', '1', 'test@gmail.com', 0, false);
 
 CREATE TABLE `rental`.`car_classes` (
     `id` INT NOT NULL PRIMARY KEY,

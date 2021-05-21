@@ -1,7 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
 <html>
 <head>
+    <%@include file="header.jsp" %>
     <title>Rental cars</title>
     <link href="resources/style.css" rel="stylesheet">
 </head>

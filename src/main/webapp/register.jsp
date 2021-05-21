@@ -1,32 +1,16 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
 <html>
 <head>
+    <%@include file="header.jsp" %>
     <title>Sign up page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="resources/style.css" rel="stylesheet">
-    <style>
-        #adminlogin {
-            position: absolute;
-            width: 350px;
-            height: 500px;
-            padding: 20px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .form {
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
 
-<section id="adminlogin">
+<section id="registerlogin">
     <div class="card z-depth-3">
-        <div class="card-panel center light-blue darken3">
-            <span class="card-title">Registration:</span>
+        <div class="card-panel center teal lighten-1">
+            <span class="card-title white-text">Registration:</span>
         </div>
         <form class="form" action="controller">
             <input type="hidden" name="command" value="registrationUser">
@@ -43,7 +27,7 @@
                 <label>Password</label>
             </div>
             <div class="center">
-                <input type="submit" class="btn-large light-blue darken3" formmethod="post" value="Register"/>
+                <input type="submit" class="btn-large teal lighten-1" formmethod="post" value="Register"/>
                 <p>
                     <a href="index.jsp">Back</a>
             </div>
@@ -53,6 +37,5 @@
     </div>
 </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
 </body>
 </html>

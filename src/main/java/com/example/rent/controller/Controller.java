@@ -40,10 +40,7 @@ public class Controller extends HttpServlet {
             request.getSession().setAttribute("error", e);
             System.out.println(e.getMessage() + e.getStackTrace());
         }
-        String greeting = "Hi, " + request.getParameter("name");
-        request.setAttribute("responce", greeting);
-        HttpSession session = request.getSession();
-        session.setAttribute("name", request.getParameter("name"));
+        request.getSession().setAttribute("name", request.getParameter("name"));
         response.sendRedirect(address);
     }
 }

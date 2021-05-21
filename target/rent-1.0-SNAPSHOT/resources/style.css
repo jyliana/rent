@@ -1,7 +1,8 @@
 h2 {
     color: dodgerblue;
 }
-#adminlogin {
+
+#registerlogin {
     position: absolute;
     width: 350px;
     height: 500px;
@@ -11,7 +12,14 @@ h2 {
     transform: translate(-50%, -50%);
 }
 
+.input {
+    padding: 5px;
+}
+
 .form {
     padding: 20px;
 }
 
+nav {
+    background-color: #4db6ac;
+}

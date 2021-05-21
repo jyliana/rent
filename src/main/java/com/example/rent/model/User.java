@@ -8,6 +8,15 @@ public class User {
     private String email;
     private int id = 0;
     private int roleId = 2;
+    private boolean isBlocked;
+
+    public boolean getIsBlocked() {
+        return isBlocked;
+    }
+
+    public void setIsBlocked(boolean blocked) {
+        isBlocked = blocked;
+    }
 
     public static User createUser(String user, String pass, String email) {
         User created = new User();
