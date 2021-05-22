@@ -1,7 +1,6 @@
 package com.example.rent.db;
 
 import com.example.rent.commands.RegistrationUserCommand;
-import com.example.rent.model.Role;
 import com.example.rent.model.User;
 import com.sun.istack.internal.logging.Logger;
 

@@ -3,14 +3,12 @@ package com.example.rent.controller;
 import com.example.rent.DBException;
 import com.example.rent.commands.Command;
 import com.example.rent.commands.CommandContainer;
-import com.mysql.cj.Session;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/Controller")
@@ -30,7 +28,7 @@ public class Controller extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String address = "error.jsp";
         String commandName = request.getParameter("command");
         Command command = CommandContainer.getCommand(commandName);
@@ -40,7 +38,10 @@ public class Controller extends HttpServlet {
             request.getSession().setAttribute("error", e);
             System.out.println(e.getMessage() + e.getStackTrace());
         }
-        request.getSession().setAttribute("name", request.getParameter("name"));
+        if (request.getParameter("name") != null) {
+            request.getSession().setAttribute("name", request.getParameter("name"));
+        }
+        request.getSession().setAttribute("command", request.getParameter("command"));
         response.sendRedirect(address);
     }
 }

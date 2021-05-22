@@ -15,16 +15,13 @@
         <form class="form" action="controller">
             <input type="hidden" name="command" value="registrationUser">
             <div class="input-field">
-                <input type="text" name="name" onclick="this.value=''" required/></br>
-                <label>Name</label>
+                <input type="text" name="name" placeholder="Name" onclick="this.value=''" required/></br>
             </div>
             <div class="input-field">
-                <input type="email" name="email" onclick="this.value=''" required/></br>
-                <label>Email</label>
+                <input type="email" name="email" placeholder="Email" onclick="this.value=''" required/></br>
             </div>
             <div class="input-field">
-                <input type="password" name="pass" onclick="this.value=''" required/></br>
-                <label>Password</label>
+                <input type="password" name="pass" placeholder="Password" onclick="this.value=''" required/></br>
             </div>
             <div class="center">
                 <input type="submit" class="btn-large teal lighten-1" formmethod="post" value="Register"/>

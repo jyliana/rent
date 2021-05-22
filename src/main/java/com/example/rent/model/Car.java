@@ -9,12 +9,21 @@ public class Car {
     private String brand;
     private String model;
     private BigDecimal priceForDay;
+    private boolean isBooked;
 
-    public static Car createCar(int classId, String brand, String model, BigDecimal priceForDay) {
+    public boolean getIsBooked() {
+        return isBooked;
+    }
+
+    public void setIsBooked(boolean isBooked) {
+        this.isBooked = isBooked;
+    }
+
+    public static Car createCar(String brand, String model, int carClass, BigDecimal priceForDay) {
         Car created = new Car();
-        created.setClassId(classId);
         created.setBrand(brand);
         created.setModel(model);
+        created.setClassId(carClass);
         created.setPriceForDay(priceForDay);
         return created;
     }
