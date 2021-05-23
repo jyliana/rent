@@ -52,6 +52,24 @@ public class UserDao {
         return null;
     }
 
+    public static boolean blockUnblockUser(int userId) {
+        String sql = "UPDATE users SET is_blocked = NOT is_blocked where id=?";
+        try (Connection conn = DBManager.getInstance().getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setInt(1, userId);
+            int result = preparedStatement.executeUpdate();
+            {
+                if (result == 1) {
+                    return true;
+                }
+            }
+            return true;
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+        return false;
+    }
+
     public static List<User> findAllUsers() {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users ORDER BY id";
@@ -73,5 +91,20 @@ public class UserDao {
             LOGGER.log(Level.SEVERE, e.getMessage());
         }
         return users;
+    }
+
+    public static boolean appointManager(int userId) {
+        String sql = "UPDATE users set role_id=1 where id=?";
+        try (Connection conn = DBManager.getInstance().getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setInt(1, userId);
+            if (preparedStatement.executeUpdate() > 0) {
+                return true;
+            }
+            return true;
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+        }
+        return false;
     }
 }

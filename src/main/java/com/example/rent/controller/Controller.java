@@ -24,6 +24,7 @@ public class Controller extends HttpServlet {
             request.setAttribute("error", e);
             System.out.println(e.getMessage() + e.getStackTrace());
         }
+        request.getSession().setAttribute("command", request.getParameter("command"));
         request.getRequestDispatcher(address).forward(request, response);
     }
 

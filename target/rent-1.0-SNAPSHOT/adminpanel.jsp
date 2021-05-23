@@ -2,12 +2,12 @@
 <%@ page import="com.example.rent.model.User" %>
 <%@ page import="com.example.rent.db.UserDao" %>
 <%@ page import="com.example.rent.model.Role" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <%@include file="header.jsp" %>
     <title>Admin panel</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="resources/materialize.css">
     <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
@@ -58,7 +58,7 @@
             </div>
             <div class="users">
                 <div class="h2">
-                    <span class="heading-title">Cars</span>
+                    <span class="heading-title">User management</span>
                 </div>
                 <div class="divider"></div>
                 <div class="item-table">
@@ -69,14 +69,29 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th></th>
                             <th>Is blocked</th>
+                            <th></th>
                         </tr>
                         <% List<User> users = UserDao.findAllUsers();
                             if (users != null && !users.isEmpty()) {
                                 for (User user : users) {
                                     out.println("<tr><td>" + user.getId() + "</td><td>" + user.getLogin() +
-                                            "</td><td>" + user.getEmail() + "</td><td>" + Role.getRole(user).getName() +
-                                            "</td><td>" + user.getIsBlocked() + "</td></tr>");
+                                            "</td><td>" + user.getEmail() + "</td><td>" + Role.getRole(user).getName()
+                                            + "</td><td>" +
+                                            "<form action=\"controller\">\n" +
+                                            "<input type=\"hidden\" name=\"command\" value=\"appointManager\">\n" +
+                                            "<input type=\"hidden\" name=\"userId\" value=" + user.getId() + ">\n" +
+                                            "<button type=\"submit\" class=\"waves-effect waves-light btn-small\">Appoint manager</button>\n" +
+                                            "</form>" +
+                                            "</td><td>"
+                                            + user.getIsBlocked() + "</td></td><td>" +
+                                            "<form action=\"controller\">\n" +
+                                            "<input type=\"hidden\" name=\"command\" value=\"blockUnblockUser\">\n" +
+                                            "<input type=\"hidden\" name=\"userId\" value=" + user.getId() + ">\n" +
+                                            "<button type=\"submit\" class=\"waves-effect waves-light btn-small\">Block/Unblock</button>\n" +
+                                            "</form>" +
+                                            "<td></tr>");
                                 }
                             } %>
                         </tbody>
@@ -86,6 +101,6 @@
         </div>
     </div>
 </section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/materialize.js"></script>
 </body>
 </html>

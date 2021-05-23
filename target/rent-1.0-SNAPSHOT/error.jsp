@@ -12,7 +12,11 @@
         Ooops, something went wrong.
     <p>
     <hr>
-    <a href="index.jsp">Back</a>
+<%--    <a href="index.jsp">Back</a>--%>
+    <div>
+<%--        <button onclick="location.href='/'">Back to main</button>--%>
+        <a href="${pageContext.request.contextPath}/">Back to main</a>
+    </div>
 </div>
 </body>
 </html>

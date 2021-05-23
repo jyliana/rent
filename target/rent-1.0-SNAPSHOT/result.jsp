@@ -2,7 +2,7 @@
 <head>
     <%@include file="header.jsp" %>
     <title>Success!</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="resources/materialize.css">
     <link rel="stylesheet" href="resources/style.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
     <%=command %>
     was successfully performed.
     <hr>
-    <a href="index.jsp">Back</a>
+    <a href="javascript:history.back()">Go Back</a>
 </div>
 </body>
 </html>
