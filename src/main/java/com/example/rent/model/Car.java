@@ -1,5 +1,6 @@
 package com.example.rent.model;
 
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -10,9 +11,18 @@ public class Car {
     private String model;
     private BigDecimal priceForDay;
     private boolean isBooked;
+    private InputStream photo;
 
     public boolean getIsBooked() {
         return isBooked;
+    }
+
+    public InputStream getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(InputStream photo) {
+        this.photo = photo;
     }
 
     public void setIsBooked(boolean isBooked) {

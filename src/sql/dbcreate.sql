@@ -45,6 +45,7 @@ CREATE TABLE `rental`.`cars` (
     `class` INT NOT NULL,
     `price` DECIMAL(6,2) NOT NULL,
     `is_booked` TINYINT NOT NULL,
+    `image` MEDIUMBLOB NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`class`)
         REFERENCES `rental`.`car_classes` (`id`)

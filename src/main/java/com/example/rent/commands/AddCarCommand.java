@@ -3,8 +3,13 @@ package com.example.rent.commands;
 import com.example.rent.db.CarDao;
 import com.example.rent.model.Car;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 
 public class AddCarCommand implements Command {
@@ -14,9 +19,23 @@ public class AddCarCommand implements Command {
         String model = request.getParameter("model");
         int carClass = Integer.parseInt(request.getParameter("carclass"));
         BigDecimal price = BigDecimal.valueOf(Double.valueOf(request.getParameter("price")));
+        InputStream photo = null;
+        try {
+            Part filePart = request.getPart("photo");
+            if (filePart != null) {
+                photo = filePart.getInputStream();
+            }
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Car car = Car.createCar(brand, model, carClass, price);
-        if (CarDao.registerCar(car))
+        car.setPhoto(photo);
+        if (CarDao.registerCar(car)) {
             return "result.jsp";
-        else return "error.jsp";
+        } else {
+            return "error.jsp";
+        }
     }
 }

@@ -2,7 +2,11 @@
 <%@ page import="com.example.rent.model.User" %>
 <%@ page import="com.example.rent.db.UserDao" %>
 <%@ page import="com.example.rent.model.Role" %>
+<%@ page import="com.example.rent.model.Car" %>
+<%@ page import="com.example.rent.db.CarDao" %>
+<%@ page import="com.example.rent.model.CarClass" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
+
 <html>
 <head>
     <%@include file="header.jsp" %>
@@ -13,7 +17,7 @@
 <body>
 <section class="body-wrapper">
     <div class="container row">
-        <div class="col m3 s12">
+        <div class="col m2 s12">
             <div class="admin-left-area">
                 <div class="profile-card">
                     <div class="image-card">
@@ -40,24 +44,43 @@
                 </div>
             </div>
         </div>
-        <div class="col m9 s12">
+        <div class="col m10 s12">
             <div class="counter-block row">
+                <div>
+                    <span class="heading-title">Car management</span>
+                </div>
                 <div class="card col m4 s12">
                     <ul>
                         <form action="addcar.jsp">
                             <button type="submit" class="waves-effect waves-light btn">Add a car</button>
                         </form>
-                        <%--                        <% List<User> users = UserDao.findAllUsers();--%>
-                        <%--                            if (users != null && !users.isEmpty()) {--%>
-                        <%--                                for (User user : users) {--%>
-                        <%--                                    out.println("<li>" + user.getId() + " " + user.getLogin() + " " + user.getEmail() + " " + Role.getRole(user).getName() + " " + user.getIsBlocked() + "</li>");--%>
-                        <%--                                }--%>
-                        <%--                            } %>--%>
                     </ul>
+                </div>
+                <div class="item-table">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>id</th>
+                            <th>Brand</th>
+                            <th>Model</th>
+                            <th>Class</th>
+                            <th>Price</th>
+                            <th>Is booked</th>
+                            <th></th>
+                        </tr>
+                        <% List<Car> cars = CarDao.findAllCars();
+                            for (Car car : cars) {
+                                out.println("<tr><td>" + car.getId() + "</td><td>" + car.getBrand() +
+                                        "</td><td>" + car.getModel() + "</td><td>" + CarClass.getCarClass(car).getName() + "</td><td>"
+                                        + car.getPriceForDay() + "</td><td>"
+                                        + car.getIsBooked() + "</td></td>");
+                            } %>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="users">
-                <div class="h2">
+                <div>
                     <span class="heading-title">User management</span>
                 </div>
                 <div class="divider"></div>

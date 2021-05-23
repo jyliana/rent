@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container row">
-    <div class="col m3 s12">
+    <div class="col m2 s12">
         <div class="admin-left-area">
             <div class="profile-card">
                 <div class="image-card">
@@ -38,18 +38,11 @@
             </div>
         </div>
     </div>
-    <div class="col m9 s12">
+    <div class="col m10 s12">
         <ul>
             <li>List of cars</li>
         </ul>
     </div>
 </div>
-<%--<p>--%>
-<%--    --%>
-<%--    Hi!--%>
-<%--        <% String name = (String)session.getAttribute("name"); %>--%>
-<%--        <%=name %>--%>
-<%--    have been successfully authorized.--%>
-<%--<p>--%>
 </body>
 </html>
