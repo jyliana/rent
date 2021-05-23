@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="resources/materialize.css">
 <link rel="stylesheet" href="resources/style.css">
 
 <div class="container row">
@@ -33,3 +33,4 @@
         </ul>
     </nav>
 </div>
+<script src="js/materialize.js"></script>

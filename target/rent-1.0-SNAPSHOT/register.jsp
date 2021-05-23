@@ -26,13 +26,12 @@
             <div class="center">
                 <input type="submit" class="btn-large teal lighten-1" formmethod="post" value="Register"/>
                 <p>
-                    <a href="index.jsp">Back</a>
+                    <a href="javascript:history.back()">Go Back</a>
             </div>
-
 
         </form>
     </div>
 </section>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/materialize.js"></script>
 </body>
 </html>
