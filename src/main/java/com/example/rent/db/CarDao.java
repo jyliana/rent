@@ -59,4 +59,21 @@ public class CarDao {
         }
         return cars;
     }
+
+    public static boolean updateCar(Car car) {
+        String sql = "UPDATE cars set brand=?, model=?, class=?, price=? where id=?";
+        try (Connection conn = DBManager.getInstance().getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, car.getBrand());
+            preparedStatement.setString(2, car.getModel());
+            preparedStatement.setInt(3, car.getClassId());
+            preparedStatement.setBigDecimal(4, car.getPriceForDay());
+//            preparedStatement.setBlob(6, car.getPhoto());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+            return false;
+        }
+    }
 }

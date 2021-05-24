@@ -32,9 +32,8 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul>
-                        <li><a href="">Add/Change car</a></li>
-                        <li><a href="">User management</a></li>
-                        <li><a href="">Register manager</a></li>
+                        <li><a href="admPanelUsers.jsp">User management</a></li>
+                        <li><a href="admPanelCars.jsp">Add/Change car</a></li>
                     </ul>
                 </div>
                 <div class="bottom-action">
@@ -45,40 +44,6 @@
             </div>
         </div>
         <div class="col m10 s12">
-            <div class="counter-block row">
-                <div>
-                    <span class="heading-title">Car management</span>
-                </div>
-                <div class="card col m4 s12">
-                    <ul>
-                        <form action="addcar.jsp">
-                            <button type="submit" class="waves-effect waves-light btn">Add a car</button>
-                        </form>
-                    </ul>
-                </div>
-                <div class="item-table">
-                    <table>
-                        <tbody>
-                        <tr>
-                            <th>id</th>
-                            <th>Brand</th>
-                            <th>Model</th>
-                            <th>Class</th>
-                            <th>Price</th>
-                            <th>Is booked</th>
-                            <th></th>
-                        </tr>
-                        <% List<Car> cars = CarDao.findAllCars();
-                            for (Car car : cars) {
-                                out.println("<tr><td>" + car.getId() + "</td><td>" + car.getBrand() +
-                                        "</td><td>" + car.getModel() + "</td><td>" + CarClass.getCarClass(car).getName() + "</td><td>"
-                                        + car.getPriceForDay() + "</td><td>"
-                                        + car.getIsBooked() + "</td></td>");
-                            } %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
             <div class="users">
                 <div>
                     <span class="heading-title">User management</span>

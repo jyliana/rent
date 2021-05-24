@@ -24,7 +24,7 @@ public class LogInUserCommand implements Command {
         user.setPass(pass);
         if (UserDao.findUser(user) != null) {
             if (Role.getRole(user).equals(Role.ADMIN))
-                return "adminpanel.jsp";
+                return "admPanelUsers.jsp";
             else
                 return "main.jsp";
         }
