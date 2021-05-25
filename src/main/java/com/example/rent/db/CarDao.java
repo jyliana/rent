@@ -68,6 +68,7 @@ public class CarDao {
             preparedStatement.setString(2, car.getModel());
             preparedStatement.setInt(3, car.getClassId());
             preparedStatement.setBigDecimal(4, car.getPriceForDay());
+            preparedStatement.setInt(5, car.getId());
 //            preparedStatement.setBlob(6, car.getPhoto());
             preparedStatement.executeUpdate();
             return true;
