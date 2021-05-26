@@ -44,7 +44,7 @@
         <div class="col m10 s12">
             <div class="counter-block row">
                 <div>
-                    <span class="heading-title">Car management</span>
+                    <span class="heading-title"><h5>Car management</h5></span>
                 </div>
                 <div class="card col m4 s12">
                     <ul>
@@ -55,7 +55,9 @@
                 </div>
             </div>
             <div class="item-table" id="items">
-
+                <div>
+                    <span class="heading-title"><h5>Edit cars:</h5></span>
+                </div>
                 <% List<Car> list = CarDao.findAllCars();
                     session.setAttribute("arr", list);
                 %>
@@ -114,35 +116,49 @@
                     </div>
                 </c:forEach>
 
-
-                <table>
-                    <tbody>
-                    <tr>
-                        <th>id</th>
-                        <th>Brand</th>
-                        <th>Model</th>
-                        <th>Class</th>
-                        <th></th>
-                        <th>Price</th>
-                        <th>Is booked</th>
-                        <th></th>
-                    </tr>
-                    <% List<Car> cars = CarDao.findAllCars();
-                        for (Car car : cars) {
-                            out.println("<form class=\"form\" action=\"controller\" enctype=\"multipart/form-data\">\n" +
-                                    "            <input type=\"hidden\" name=\"command\" value=\"updateCarInfo\"></input>" +
-                                    "<tr><td>" + car.getId() + "</td><td><input type=\"text\" name=\"brand\" value=" + car.getBrand() + "></input></td>" +
-                                    "<td><input type=\"text\" name=\"model\" value=" + car.getModel() + "></input></td>" +
-                                    "<td>" + CarClass.getCarClass(car).getName() + "</td><td><select class=\"browser-default\" name=\"carclass\">\n" +
-                                    "<option selected disabled value=\"0\">Class</option>\n" +
-                                    "<option value=\"0\">Entry</option>\n" +
-                                    "<option value=\"1\">Business</option>\n" +
-                                    "<option value=\"2\">Premium</option>\n" +
-                                    "</select></td>" +
-                                    "<td><input type=\"text\" name=\"price\" value=" + car.getPriceForDay() + "></input></td>" +
-                                    "<td><input type=\"hidden\" name=\"id\" value=" + car.getId() + ">" + car.getIsBooked() + "</input></td></td>" +
-                                    "<td><input type=\"submit\" class=\"btn-large teal lighten-1\" formmethod=\"post\" value=\"Update info\"/></td></tr></form>");
-                        } %>
+<%--                <table>--%>
+<%--                    <tbody>--%>
+<%--                    <tr>--%>
+<%--                        <th>id</th>--%>
+<%--                        <th>Brand</th>--%>
+<%--                        <th>Model</th>--%>
+<%--                        <th>Class</th>--%>
+<%--                        <th></th>--%>
+<%--                        <th>Price</th>--%>
+<%--                        <th>Is booked</th>--%>
+<%--                        <th></th>--%>
+<%--                    </tr>--%>
+                    <%--                    <% List<Car> cars = CarDao.findAllCars();--%>
+                    <%--                        session.setAttribute("arr", cars);--%>
+                    <%--                    %>--%>
+                    <%--                    <c:forEach var="car" items="${arr}">--%>
+                    <%--                        <tr>--%>
+                    <%--                            <td>${car.id}</td>--%>
+                    <%--                            <td>${car.brand}</td>--%>
+                    <%--                            <td>${car.model}</td>--%>
+                    <%--                            <td>${CarClass.getCarClass(car).getName()}</td>--%>
+                    <%--                            <td></td>--%>
+                    <%--                            <td>${car.priceForDay}</td>--%>
+                    <%--                            <td>${car.isBooked}</td>--%>
+                    <%--                            <td></td>--%>
+                    <%--                        </tr>--%>
+                    <%--                    </c:forEach>--%>
+                    <%--                    <% List<Car> carss = CarDao.findAllCars();--%>
+                    <%--                        for (Car car : carss) {--%>
+                    <%--                            out.println("<form class=\"form\" action=\"controller\" enctype=\"multipart/form-data\">\n" +--%>
+                    <%--                                    "            <input type=\"hidden\" name=\"command\" value=\"updateCarInfo\"></input>" +--%>
+                    <%--                                    "<tr><td>" + car.getId() + "</td><td><input type=\"text\" name=\"brand\" value=" + car.getBrand() + "></input></td>" +--%>
+                    <%--                                    "<td><input type=\"text\" name=\"model\" value=" + car.getModel() + "></input></td>" +--%>
+                    <%--                                    "<td>" + CarClass.getCarClass(car).getName() + "</td><td><select class=\"browser-default\" name=\"carclass\">\n" +--%>
+                    <%--                                    "<option selected disabled value=\"0\">Class</option>\n" +--%>
+                    <%--                                    "<option value=\"0\">Entry</option>\n" +--%>
+                    <%--                                    "<option value=\"1\">Business</option>\n" +--%>
+                    <%--                                    "<option value=\"2\">Premium</option>\n" +--%>
+                    <%--                                    "</select></td>" +--%>
+                    <%--                                    "<td><input type=\"text\" name=\"price\" value=" + car.getPriceForDay() + "></input></td>" +--%>
+                    <%--                                    "<td><input type=\"hidden\" name=\"id\" value=" + car.getId() + ">" + car.getIsBooked() + "</input></td></td>" +--%>
+                    <%--                                    "<td><input type=\"submit\" class=\"btn-large teal lighten-1\" formmethod=\"post\" value=\"Update info\"/></td></tr></form>");--%>
+                    <%--                        } %>--%>
                     </tbody>
                 </table>
             </div>

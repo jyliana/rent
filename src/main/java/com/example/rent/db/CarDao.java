@@ -5,6 +5,8 @@ import com.example.rent.model.Car;
 import com.example.rent.model.User;
 import com.sun.istack.internal.logging.Logger;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +38,9 @@ public class CarDao {
         }
     }
 
-    public static List<Car> findAllCars() {
+    public static List<Car> findAllCars() throws IOException {
         List<Car> cars = new ArrayList<>();
+//        InputStream photo = null;
         String sql = "SELECT * FROM cars ORDER BY id";
         try (Connection conn = DBManager.getInstance().getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
@@ -51,12 +54,19 @@ public class CarDao {
                     car.setPriceForDay(resultSet.getBigDecimal(5));
                     car.setIsBooked(resultSet.getBoolean(6));
                     car.setPhoto(resultSet.getBinaryStream(7));
+//                    Blob imageBlob = resultSet.getBlob(7);
+//                    photo = imageBlob.getBinaryStream();
+//                    car.setPhoto(photo);
                     cars.add(car);
                 }
             }
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
+            System.out.println(e.getMessage() + e.getStackTrace());
         }
+//        finally {
+//            photo.close();
+//        }
         return cars;
     }
 

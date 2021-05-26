@@ -2,14 +2,12 @@
 <%@ page import="com.example.rent.model.User" %>
 <%@ page import="com.example.rent.db.UserDao" %>
 <%@ page import="com.example.rent.model.Role" %>
-<%@ page import="com.example.rent.model.Car" %>
-<%@ page import="com.example.rent.db.CarDao" %>
-<%@ page import="com.example.rent.model.CarClass" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <html>
 <head>
     <%@include file="header.jsp" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <title>Admin panel</title>
     <link rel="stylesheet" href="resources/materialize.css">
     <link rel="stylesheet" href="resources/style.css">
@@ -61,27 +59,35 @@
                             <th>Is blocked</th>
                             <th></th>
                         </tr>
-                        <% List<User> users = UserDao.findAllUsers();
-                            if (users != null && !users.isEmpty()) {
-                                for (User user : users) {
-                                    out.println("<tr><td>" + user.getId() + "</td><td>" + user.getLogin() +
-                                            "</td><td>" + user.getEmail() + "</td><td>" + Role.getRole(user).getName()
-                                            + "</td><td>" +
-                                            "<form action=\"controller\">\n" +
-                                            "<input type=\"hidden\" name=\"command\" value=\"appointManager\">\n" +
-                                            "<input type=\"hidden\" name=\"userId\" value=" + user.getId() + ">\n" +
-                                            "<button type=\"submit\" class=\"waves-effect waves-light btn-small\">Appoint manager</button>\n" +
-                                            "</form>" +
-                                            "</td><td>"
-                                            + user.getIsBlocked() + "</td></td><td>" +
-                                            "<form action=\"controller\">\n" +
-                                            "<input type=\"hidden\" name=\"command\" value=\"blockUnblockUser\">\n" +
-                                            "<input type=\"hidden\" name=\"userId\" value=" + user.getId() + ">\n" +
-                                            "<button type=\"submit\" class=\"waves-effect waves-light btn-small\">Block/Unblock</button>\n" +
-                                            "</form>" +
-                                            "<td></tr>");
-                                }
-                            } %>
+                        <% List<User> list = UserDao.findAllUsers();
+                            session.setAttribute("arr", list);
+                        %>
+                        <c:forEach var="user" items="${arr}">
+                            <tr>
+                                <td>${user.id}</td>
+                                <td>${user.login}</td>
+                                <td>${user.email}</td>
+                                <td>${Role.getRole(user).getName()}</td>
+                                <td>
+                                    <form action="controller">
+                                        <input type="hidden" name="command" value="appointManager">
+                                        <input type="hidden" name="userId" value=${user.id}>
+                                        <button type="submit" class="waves-effect waves-light btn-small">Appoint
+                                            manager
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>${user.getIsBlocked()}</td>
+                                <td>
+                                    <form action="controller">
+                                        <input type="hidden" name="command" value="blockUnblockUser">
+                                        <input type="hidden" name="userId" value=${user.id}>
+                                        <button type="submit" class="waves-effect waves-light btn-small">Block/Unblock
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>

@@ -54,29 +54,36 @@ CREATE TABLE `rental`.`cars`
     `id`        INT           NOT NULL AUTO_INCREMENT,
     `brand`     VARCHAR(45)   NOT NULL,
     `model`     VARCHAR(45)   NOT NULL,
-    `class`     INT           NOT NULL,
+    `class_id`     INT           NOT NULL,
     `price`     DECIMAL(6, 2) NOT NULL,
     `is_booked` TINYINT       NOT NULL,
     `image`     MEDIUMBLOB    NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`class`)
+    FOREIGN KEY (`class_id`)
         REFERENCES `rental`.`car_classes` (`id`)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION
 );
 
-INSERT INTO `rental`.`cars` (`brand`, `model`, `class`, `price`, `is_booked`)
+INSERT INTO `rental`.`cars` (`brand`, `model`, `class_id`, `price`, `is_booked`)
 VALUES ('Mazda', '6', 1, 2500.00, false);
-INSERT INTO `rental`.`cars` (`brand`, `model`, `class`, `price`, `is_booked`)
+INSERT INTO `rental`.`cars` (`brand`, `model`, `class_id`, `price`, `is_booked`)
 VALUES ('Toyota', 'Camry VX70', 1, 3700.00, false);
-INSERT INTO `rental`.`cars` (`brand`, `model`, `class`, `price`, `is_booked`)
+INSERT INTO `rental`.`cars` (`brand`, `model`, `class_id`, `price`, `is_booked`)
 VALUES ('Porsche', 'Cayenne', 2, 9000.00, false);
-INSERT INTO `rental`.`cars` (`brand`, `model`, `class`, `price`, `is_booked`)
+INSERT INTO `rental`.`cars` (`brand`, `model`, `class_id`, `price`, `is_booked`)
 VALUES ('Mercedes-Benz', 'S500', 2, 9100.00, false);
-INSERT INTO `rental`.`cars` (`brand`, `model`, `class`, `price`, `is_booked`)
+INSERT INTO `rental`.`cars` (`brand`, `model`, `class_id`, `price`, `is_booked`)
 VALUES ('Ford', 'Fiesta VI', 0, 1000.00, false);
-INSERT INTO `rental`.`cars` (`brand`, `model`, `class`, `price`, `is_booked`)
+INSERT INTO `rental`.`cars` (`brand`, `model`, `class_id`, `price`, `is_booked`)
 VALUES ('Renault', 'Logan TDI', 0, 1300.00, false);
+
+CREATE TABLE `rental`.`order_statuses`
+(
+    `id`     INT         NOT NULL AUTO_INCREMENT,
+    `status` VARCHAR(45) NOT NULL UNIQUE,
+    PRIMARY KEY (`id`)
+);
 
 CREATE TABLE `rental`.`orders`
 (
@@ -106,13 +113,7 @@ CREATE TABLE `rental`.`orders`
             ON UPDATE NO ACTION
 );
 
-CREATE TABLE `rental`.`order_statuses`
-(
-    `id`     INT         NOT NULL AUTO_INCREMENT,
-    `status` VARCHAR(45) NOT NULL UNIQUE,
-    PRIMARY KEY (`id`)
-);
-
+use rental;
 insert into order_statuses (`status`)
 values ('New');
 insert into order_statuses (`status`)
