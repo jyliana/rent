@@ -2,6 +2,7 @@
 <%@ page import="com.example.rent.model.Car" %>
 <%@ page import="com.example.rent.db.CarDao" %>
 <%@ page import="com.example.rent.model.CarClass" %>
+<%@ page import="java.io.OutputStream" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <html>
@@ -41,12 +42,12 @@
                     session.setAttribute("arr", list);
                 %>
                 <c:forEach var="x" items="${arr}">
-                    <div class="row col m4 s12">
+                    <div class="row col m5 s12">
                         <div class="card" style="width: 20rem;">
                             <div class="card-body">
                                 <form class="form" action="controller">
                                     <input type="hidden" name="command" value="updateCarInfo">
-<%--                                    <img src=${x.photo}>--%>
+                                    <img src="${x.path}"/>
                                     <div class="form-group row">
                                         <div class="col-sm-9">
                                             <h5 class="card-title">${x.brand} ${x.model}

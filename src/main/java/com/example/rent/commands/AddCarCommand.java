@@ -11,6 +11,7 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.sql.Blob;
 
 public class AddCarCommand implements Command {
     @Override

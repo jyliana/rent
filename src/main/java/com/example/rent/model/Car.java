@@ -1,7 +1,10 @@
 package com.example.rent.model;
 
-import java.io.InputStream;
+import java.io.*;
 import java.math.BigDecimal;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.Base64;
 import java.util.Objects;
 
 public class Car {
@@ -12,6 +15,27 @@ public class Car {
     private BigDecimal priceForDay;
     private boolean isBooked;
     private InputStream photo;
+    private Blob blob;
+    private String path;
+
+    public String getPath() throws SQLException {
+        byte[] imageBytes = blob.getBytes(1, (int) blob.length());
+        String encodedImage = Base64.getEncoder().encodeToString(imageBytes);
+        path = "data:image/jpg;base64," + encodedImage;
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public Blob getBlob() {
+        return blob;
+    }
+
+    public void setBlob(Blob blob) {
+        this.blob = blob;
+    }
 
     public boolean getIsBooked() {
         return isBooked;
@@ -100,4 +124,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(brand, model);
     }
+
 }
