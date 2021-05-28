@@ -26,7 +26,7 @@ public class LogInUserCommand implements Command {
             if (Role.getRole(user).equals(Role.ADMIN))
                 return "admPanelUsers.jsp";
             else
-                return "main.jsp";
+                return "index.jsp";
         }
         return "error.jsp";
     }

@@ -12,7 +12,7 @@
         <div class="card-panel center teal lighten-1">
             <span class="card-title white-text">Adding a car:</span>
         </div>
-        <form class="form" action="controller" enctype="multipart/form-data">
+        <form class="form" action="controller">
             <input type="hidden" name="command" value="addCar">
             <div class="input-field">
                 <input type="text" name="brand" placeholder="Brand" onclick="this.value=''" required/></br>

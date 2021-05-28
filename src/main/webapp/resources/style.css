@@ -12,6 +12,16 @@ h2 {
     transform: translate(-50%, -50%);
 }
 
+#bookform {
+    position: absolute;
+    width: 950px;
+    height: 500px;
+    padding: 20px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .input {
     padding: 5px;
 }
