@@ -3,6 +3,7 @@ package com.example.rent.commands;
 import com.example.rent.DBException;
 import com.example.rent.db.OrderDao;
 import com.example.rent.db.UserDao;
+import com.example.rent.model.Bill;
 import com.example.rent.model.Order;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +22,14 @@ public class ChangeOrderStatusCommand implements Command {
         order.setStatusId(statusId);
         order.setComment(comment);
 
-        if (OrderDao.updateOrder(order))
+        if (OrderDao.updateOrder(order)) {
+//            int days = OrderDao.returnAmountOfBookedDays(order);
+//            if (days > 0) {
+////                Bill bill = Bill.createBill(orderId, days, );
+//            }
             return "mngOrders.jsp";
-        else return "error.jsp";
+        } else {
+            return "error.jsp";
+        }
     }
 }

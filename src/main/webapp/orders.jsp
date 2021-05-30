@@ -81,6 +81,8 @@
                             <th>With driver</th>
                             <th>Start date</th>
                             <th>End date</th>
+                            <th>Days</th>
+                            <th>Total(hrn)</th>
                             <th>Status</th>
                         </tr>
                         <% List<Order> list = OrderDao.findAllUserOrders(name);
@@ -106,6 +108,8 @@
                                 </td>
                                 <td>${order.startDate}</td>
                                 <td>${order.endDate}</td>
+                                <td>${order.days}</td>
+                                <td>${order.totalSum}</td>
                                 <td>
                                     <c:if test="${order.statusId==0}">
                                         <div class="image-card">
@@ -119,7 +123,7 @@
                                     </c:if>
                                     <c:if test="${order.statusId==2}">
                                         <div class="image-card">
-                                            <img src="img/redjected.png">
+                                            <img src="img/rejected.png">
                                         </div>
                                     </c:if>
                                 </td>

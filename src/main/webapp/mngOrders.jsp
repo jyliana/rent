@@ -48,7 +48,7 @@
         <div class="col m11 s12">
             <div class="orders">
                 <div>
-                    <span class="heading-title"><h5>Orders for inspection:</h5></span>
+                    <h5>Orders for inspection:</h5>
                 </div>
                 <div class="divider"></div>
                 <div class="item-table">
@@ -62,6 +62,8 @@
                             <th>With driver</th>
                             <th>Start date</th>
                             <th>End date</th>
+                            <th>Days</th>
+                            <th>Total(hrn)</th>
                             <th>Status</th>
                             <th>Approve/Reject</th>
                         </tr>
@@ -89,6 +91,8 @@
                                     </td>
                                     <td>${order.startDate}</td>
                                     <td>${order.endDate}</td>
+                                    <td>${order.days}</td>
+                                    <td>${order.totalSum}</td>
                                     <td>
                                         <c:if test="${order.statusId==0}">
                                             <div class="image-card">
@@ -102,7 +106,7 @@
                                         </c:if>
                                         <c:if test="${order.statusId==2}">
                                             <div class="image-card">
-                                                <img src="img/redjected.png">
+                                                <img src="img/rejected.png">
                                             </div>
                                         </c:if>
                                     </td>
@@ -113,7 +117,7 @@
                                                 <input type="hidden" name="orderId" value="${order.id}">
                                                 <h6 class="card-subtitle mb-2 text-muted">
                                                     <select class="browser-default" name="status">
-                                                        <option selected>${OrderStatus.getOrderStatus(order).getName()}</option>
+                                                        <option selected></option>
                                                         <option value="1">Approved</option>
                                                         <option value="2">Rejected</option>
                                                     </select>
@@ -122,7 +126,6 @@
                                                 <textarea class="form-control" rows="3" name="comment"></textarea>
                                                 <input type="submit" class="btn-small teal lighten-1" formmethod="post"
                                                        value="Set"/>
-                                            </form>
                                             </form>
                                         </div>
                                     </td>
@@ -135,7 +138,7 @@
             </div>
             <div class="orders">
                 <div>
-                    <span class="heading-title"><h5>All orders:</h5></span>
+                    <h5>All orders:</h5>
                 </div>
                 <div class="divider"></div>
                 <div class="item-table">
@@ -149,6 +152,8 @@
                             <th>With driver</th>
                             <th>Start date</th>
                             <th>End date</th>
+                            <th>Days</th>
+                            <th>Total(hrn)</th>
                             <th>Status</th>
                         </tr>
                         <c:forEach var="order" items="${arr}">
@@ -171,6 +176,8 @@
                                 </td>
                                 <td>${order.startDate}</td>
                                 <td>${order.endDate}</td>
+                                <td>${order.days}</td>
+                                <td>${order.totalSum}</td>
                                 <td>
                                     <c:if test="${order.statusId==0}">
                                         <div class="image-card">
@@ -184,7 +191,7 @@
                                     </c:if>
                                     <c:if test="${order.statusId==2}">
                                         <div class="image-card">
-                                            <img src="img/redjected.png">
+                                            <img src="img/rejected.png">
                                         </div>
                                     </c:if>
                                 </td>

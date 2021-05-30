@@ -9,17 +9,16 @@ public class Bill {
     private int orderId;
     private int billTypeId;
     private int days;
-    private BigDecimal wholePrice;
+    private BigDecimal totalSum;
     private Date createDate;
     private Date payDate;
     private boolean isPayed;
 
-    public static Bill createBill(int id, int orderId, int days, BigDecimal wholePrice, Date createDate) {
+    public static Bill createBill(int orderId, int days, BigDecimal totalSum, Date createDate) {
         Bill created = new Bill();
-        created.setId(id);
         created.setOrderId(orderId);
         created.setDays(days);
-        created.setWholePrice(wholePrice);
+        created.setTotalSum(totalSum);
         created.setCreateDate(createDate);
         return created;
     }
@@ -56,12 +55,12 @@ public class Bill {
         this.days = days;
     }
 
-    public BigDecimal getWholePrice() {
-        return wholePrice;
+    public BigDecimal getTotalSum() {
+        return totalSum;
     }
 
-    public void setWholePrice(BigDecimal wholePrice) {
-        this.wholePrice = wholePrice;
+    public void setTotalSum(BigDecimal totalSum) {
+        this.totalSum = totalSum;
     }
 
     public Date getCreateDate() {
@@ -95,7 +94,7 @@ public class Bill {
                 ", orderId=" + orderId +
                 ", billTypeId=" + billTypeId +
                 ", days=" + days +
-                ", wholePrice=" + wholePrice +
+                ", wholePrice=" + totalSum +
                 ", createDate=" + createDate +
                 ", payDate=" + payDate +
                 ", isPayed=" + isPayed +
@@ -107,11 +106,11 @@ public class Bill {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bill bill = (Bill) o;
-        return id == bill.id && orderId == bill.orderId && billTypeId == bill.billTypeId && days == bill.days && isPayed == bill.isPayed && Objects.equals(wholePrice, bill.wholePrice) && Objects.equals(createDate, bill.createDate) && Objects.equals(payDate, bill.payDate);
+        return id == bill.id && orderId == bill.orderId && billTypeId == bill.billTypeId && days == bill.days && isPayed == bill.isPayed && Objects.equals(totalSum, bill.totalSum) && Objects.equals(createDate, bill.createDate) && Objects.equals(payDate, bill.payDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, orderId, billTypeId, days, wholePrice, createDate, payDate, isPayed);
+        return Objects.hash(id, orderId, billTypeId, days, totalSum, createDate, payDate, isPayed);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.rent.model;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -13,6 +14,8 @@ public class Order {
     private Date endDate;
     private int statusId;
     private String comment;
+    private int days;
+    private BigDecimal totalSum;
 
     public static Order createOrder(int carId, int userId, String passDetails, boolean hasDriver, Date startDate, Date endDate) {
         Order created = new Order();
@@ -24,6 +27,22 @@ public class Order {
         created.setEndDate(endDate);
         created.setStatusId(0);
         return created;
+    }
+
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+    public BigDecimal getTotalSum() {
+        return totalSum;
+    }
+
+    public void setTotalSum(BigDecimal totalSum) {
+        this.totalSum = totalSum;
     }
 
     public String getComment() {

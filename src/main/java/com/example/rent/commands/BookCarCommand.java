@@ -1,15 +1,18 @@
 package com.example.rent.commands;
 
 import com.example.rent.DBException;
+import com.example.rent.db.CarDao;
 import com.example.rent.db.OrderDao;
 import com.example.rent.db.UserDao;
 import com.example.rent.model.Order;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Period;
 
 public class BookCarCommand implements Command {
     @Override
@@ -35,7 +38,14 @@ public class BookCarCommand implements Command {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        int days = 0;
+        if (sDate != null && eDate != null) {
+            days = Period.between(sDate.toLocalDate(), eDate.toLocalDate()).getDays();
+        }
+        BigDecimal totalSum = CarDao.getCarById(carId).getPriceForDay().multiply(BigDecimal.valueOf(days));
         Order order = Order.createOrder(carId, userId, passDetails, hasDriver, sDate, eDate);
+        order.setDays(days);
+        order.setTotalSum(totalSum);
         if (OrderDao.createOrder(order))
             return "orders.jsp";
         else return "error.jsp";

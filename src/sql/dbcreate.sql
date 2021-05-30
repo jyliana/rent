@@ -96,6 +96,8 @@ CREATE TABLE `rental`.`order`
     `end_date`     DATE         NOT NULL,
     `status_id`    INT          NOT NULL,
     `comment`      VARCHAR(225) NULL,
+    `days`         INT          NOT NULL,
+    `total_sum`   DECIMAL      NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `car_id`
         FOREIGN KEY (`car_id`)
@@ -142,7 +144,7 @@ CREATE TABLE `rental`.`bill`
     `days`         INT     NOT NULL,
     `price`        DECIMAL NOT NULL,
     `create_date`  DATE    NOT NULL,
-    `pay_date`   DATE    NULL,
+    `pay_date`     DATE    NULL,
     `is_payed`     TINYINT NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `order_id`
