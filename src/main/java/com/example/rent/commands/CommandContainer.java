@@ -15,6 +15,7 @@ public class CommandContainer {
         commands.put("addCar", new AddCarCommand());
         commands.put("updateCarInfo", new UpdateCarInfoCommand());
         commands.put("bookCar", new BookCarCommand());
+        commands.put("changeOrderStatus", new ChangeOrderStatusCommand());
     }
 
     public static Command getCommand(String CommandName) {

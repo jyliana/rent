@@ -8,30 +8,33 @@
     <title>Book a car</title>
     <link rel="stylesheet" href="resources/materialize.css">
     <link rel="stylesheet" href="resources/style.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"
+            type="text/javascript"></script>
+    <script>
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     var elems = document.querySelectorAll('.datepicker');
+        //     var instances = M.Datepicker.init(elems, options);
+        // });
+
+        // Or with jQuery
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+        });
+
+        // $('.input-daterange input').each(function () {
+        //     $(this).datepicker('clearDates');
+        // });
+        //
+        // $('#datepicker').datepicker();
+        // $('#datepicker').on('changeDate', function () {
+        //     $('#my_hidden_input').val(
+        //         $('#datepicker').datepicker('getFormattedDate')
+        //     );
+        // });
+    </script>
 </head>
 <body>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.datepicker');
-        var instances = M.Datepicker.init(elems, options);
-    });
 
-    // Or with jQuery
-    $(document).ready(function () {
-        $('.datepicker').datepicker();
-    });
-
-    $('.input-daterange input').each(function () {
-        $(this).datepicker('clearDates');
-    });
-
-    $('#datepicker').datepicker();
-    $('#datepicker').on('changeDate', function () {
-        $('#my_hidden_input').val(
-            $('#datepicker').datepicker('getFormattedDate')
-        );
-    });
-</script>
 
 <section id="bookform">
     <div class="card z-depth-3">
@@ -76,18 +79,20 @@
                 <div class="col m6 s12">
                     <form class="form" action="controller">
                         <input type="hidden" name="command" value="bookCar">
+                        <input type="hidden" name="id" value="${id}">
+                        <input type="hidden" name="name" value="${name}">
                         <div class="input-field">
                             <h6> Greetings, ${name}! You've chosen the best car for your goals. </h6>
                         </div>
                         <div class="form-group">
                             <label>Please enter your passport details</label>
-                            <textarea class="form-control" rows="7"></textarea>
+                            <textarea class="form-control" rows="7" name="passDetails"></textarea>
                         </div>
                         <div class="input-field">
                             <div class="switch">
                                 <label>
-                                    <strong> Without driver</strong>
-                                    <input type="checkbox">
+                                    <strong>Without driver</strong>
+                                    <input type="checkbox" name="hasDriver">
                                     <span class="lever"></span>
                                     <strong>With driver</strong>
                                 </label>
@@ -95,28 +100,24 @@
                         </div>
                         <div class="input-field">
                             <div class="input-fieldr">
-                                <input type="text" class="datepicker">
+                                <input type="text" class="datepicker" name="startDate">
                                 <span>Pick-up date</span>
                             </div>
                         </div>
                         <div class="input-field">
-                            <div class="input-group date" data-provide="datepicker">
-                                <input type="text" class="form-control">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th">Return date</span>
-                                    <div id="datepicker" data-date="12/03/2012"></div>
-                                    <input type="hidden" id="my_hidden_input">
-                                    <div class="input-group input-daterange">
-                                        <input type="text" class="form-control" value="2012-04-05">
-                                        <div class="input-group-addon">to</div>
-                                        <input type="text" class="form-control" value="2012-04-19">
-                                    </div>
-                                </div>
+                            <div class="input-fieldr">
+                                <input type="text" class="datepicker" name="endDate">
+                                <span>Return date</span>
                             </div>
                         </div>
                         <div class="center">
-                            <input type="submit" class="btn-large teal lighten-1" formmethod="post"
-                                   value="Book now"/>
+                            <c:if test="${name != \"guest\"}">
+                                <input type="submit" class="btn-large teal lighten-1"
+                                       value="Book now"/>
+                            </c:if>
+                            <c:if test="${name == \"guest\"}">
+                                <h5>Unauthorized user cannot book a car, please log in or register.</h5>
+                            </c:if>
                             <p>
                                 <a href="javascript:history.back()">Go Back</a>
                         </div>

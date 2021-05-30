@@ -45,9 +45,8 @@
                             <div class="sidebar-menu">
                                 <div class="menu-item">
                                     <ul>
-                                        <li><a href="">Book a car</a></li>
-                                        <li><a href="">Enter your data</a></li>
-                                        <li><a href="">Payments</a></li>
+                                        <li><a href="orders.jsp">My orders</a></li>
+                                        <li><a href="bills.jsp">My bills</a></li>
                                     </ul>
                                 </div>
                             </div>

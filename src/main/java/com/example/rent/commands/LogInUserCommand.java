@@ -23,10 +23,13 @@ public class LogInUserCommand implements Command {
         user.setLogin(name);
         user.setPass(pass);
         if (UserDao.findUser(user) != null) {
-            if (Role.getRole(user).equals(Role.ADMIN))
+            if (Role.getRole(user).equals(Role.ADMIN)) {
                 return "admPanelUsers.jsp";
-            else
+            } else if (Role.getRole(user).equals(Role.MANAGER)) {
+                return "mngOrders.jsp";
+            } else {
                 return "index.jsp";
+            }
         }
         return "error.jsp";
     }

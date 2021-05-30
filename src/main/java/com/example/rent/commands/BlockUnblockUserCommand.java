@@ -11,7 +11,7 @@ public class BlockUnblockUserCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         int userId = Integer.parseInt(request.getParameter("userId"));
         if (UserDao.blockUnblockUser(userId)) {
-            return "result.jsp";
+            return "admPanelUsers.jsp";
         }
         return "error.jsp";
     }

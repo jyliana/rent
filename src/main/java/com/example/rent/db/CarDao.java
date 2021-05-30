@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.logging.Level;
 
 public class CarDao {
-    private static final Logger LOGGER = Logger.getLogger(RegistrationUserCommand.class);
+    private static final Logger LOGGER = Logger.getLogger(CarDao.class);
 
     public static boolean registerCar(Car car) {
-        String sql = "INSERT INTO cars (brand, model, class, price, is_booked, image) VALUES (?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO car (brand, model, class, price, is_booked, image) VALUES (?, ?, ?, ?, ?,?)";
         try (Connection conn = DBManager.getInstance().getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, car.getBrand());
@@ -37,7 +37,7 @@ public class CarDao {
 
     public static List<Car> findAllCars() {
         List<Car> cars = new ArrayList<>();
-        String sql = "SELECT * FROM cars ORDER BY id";
+        String sql = "SELECT * FROM car ORDER BY id";
         try (Connection conn = DBManager.getInstance().getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -63,7 +63,7 @@ public class CarDao {
 
     public static Car getCarById(int id) {
         Car car = new Car();
-        String sql = "SELECT * FROM cars WHERE id=?";
+        String sql = "SELECT * FROM car WHERE id=?";
         try (Connection conn = DBManager.getInstance().getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
             preparedStatement.setInt(1, id);
@@ -87,7 +87,7 @@ public class CarDao {
     }
 
     public static boolean updateCar(Car car) {
-        String sql = "UPDATE cars set brand=?, model=?, class=?, price=? where id=?";
+        String sql = "UPDATE car set brand=?, model=?, class=?, price=? where id=?";
         try (Connection conn = DBManager.getInstance().getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, car.getBrand());
